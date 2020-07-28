@@ -1,8 +1,5 @@
-import argparse
 import sys
 import jupyter_client
-
-
 
 
 def create_client_connection_to_kernel():
@@ -15,8 +12,10 @@ def create_client_connection_to_kernel():
 if __name__ == '__main__':
     
     # Command-Line Interface
+    import argparse
+
     arg_parser = argparse.ArgumentParser(
-            prog='2QuTe',
+            prog='tooqute',
             description='Interact with a Jupyter kernel from the command line')
 
     arg_parser.add_argument('code', action='store', nargs='?',
@@ -35,7 +34,7 @@ if __name__ == '__main__':
         except AttributeError:
             raise TypeError('Input is not a string, stdin, or file')
 
-    # QT Messaging
+    # Jupyter Messaging
     client = create_client_connection_to_kernel()
 
     if args['execute']:
