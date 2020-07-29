@@ -1,3 +1,3 @@
-# tooqute
+# toju
 
-A small CLI tool for interacting with a Jupyter Kernal from the command line.
+A small CLI tool for interacting with a Jupyter kernel from the command line.
