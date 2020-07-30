@@ -4,7 +4,7 @@ from jupyter_client import find_connection_file, BlockingKernelClient
 
 
 def get_kwargs():
-    arg_parser = ArgumentParser(prog='tooqute',
+    arg_parser = ArgumentParser(prog='toju',
                                 description=('Interact with a Jupyter kernel '
                                              'from the command line.'))
     arg_parser.add_argument('action', action='store',
