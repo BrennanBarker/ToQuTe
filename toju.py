@@ -33,16 +33,15 @@ def requested_fields(reply, action, verbose):
     return reply_content if verbose else subfield[action]
 
 
-def message_jupyter(client, action, code, verbose):
-    reply = getattr(client, action)(code, reply=True, allow_stdin=False)
-    return requested_fields(reply, action, verbose)
-
-
 def main(action, code, verbose):
     client = client_connection_to_kernel()
-    reply = message_jupyter(client, action, code, verbose)
-    print(reply if reply else 'Code sent to kernel.')
-    return reply
+    if action == 'execute':
+        reply = getattr(client, action)(code, reply=True, allow_stdin=False)
+    else:
+        reply = getattr(client, action)(code, reply=True)
+    fields = requested_fields(reply, action, verbose)
+    print(fields)
+    return fields
 
 
 if __name__ == '__main__':
