@@ -16,7 +16,7 @@ def get_kwargs():
     return kwargs
 
 
-def main(action, code, verbose):
+def main(code):
     client = BlockingKernelClient()
     client.load_connection_file(find_connection_file())
     client.execute(code, allow_stdin=False)
