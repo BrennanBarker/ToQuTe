@@ -2,15 +2,11 @@ from argparse import ArgumentParser
 import sys
 from jupyter_client import find_connection_file, BlockingKernelClient
 
-# TODO: verbose--get additional reply fields
-# TODO: subcommmands vice choices
-# TODO: check, respond with message status
-# TODO: add better help
-
 
 def get_kwargs():
     arg_parser = ArgumentParser(prog='tooqute',
-            description='Interact with a Jupyter kernel from the command line')
+                                description=('Interact with a Jupyter kernel '
+                                             'from the command line.'))
     arg_parser.add_argument('action', action='store',
                             choices=['execute', 'complete', 'inspect'])
     arg_parser.add_argument('code', action='store', nargs='?',
@@ -31,15 +27,14 @@ def client_connection_to_kernel():
 
 
 def requested_fields(reply, action, verbose):
-    reply_content_fields = {'execute': 'user_expressions',
-                            'complete': 'matches',
-                            'inspect': 'data'}
-    field = reply_content_fields[action]
-    return reply['content'] if verbose else reply['content'][field]
+    subfield = {'execute': reply['content'].get('user_expressions'),
+                'complete': reply['content'].get('matches'),
+                'inspect': reply['content'].get('data').get('text/plain')}
+    return reply_content if verbose else subfield[action]
 
 
 def message_jupyter(client, action, code, verbose):
-    reply = getattr(client, action)(code, reply=True)
+    reply = getattr(client, action)(code, reply=True, allow_stdin=False)
     return requested_fields(reply, action, verbose)
 
 
@@ -47,6 +42,7 @@ def main(action, code, verbose):
     client = client_connection_to_kernel()
     reply = message_jupyter(client, action, code, verbose)
     print(reply if reply else 'Code sent to kernel.')
+    return reply
 
 
 if __name__ == '__main__':
