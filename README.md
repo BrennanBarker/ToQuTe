@@ -46,10 +46,10 @@ console within JupyterLab, but the output is not automatically displayed. You
 can see that code sent by `toju` is still executed in the kernel, however, by 
 executing code using `toju` and then running the Jupyter cell magic `%rerun`.
 
-If you have just a single kernel running, setup is trivial.  Simply open a
-Jupyter frontend from a terminal as normal, then invoke `toju` with the code
+If you have just a single kernel running, simply invoke `toju` with the code
 you'd like execute in the kernel as an argument. For example (assuming you have
-made `toju` executable and placed it on your $PATH [as above](#make-esecutable)):
+made `toju` executable and placed it on your $PATH [as
+above](#make-executable)):
 
 ```bash
     $ toju "print('Hello World')"
