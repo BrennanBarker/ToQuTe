@@ -29,9 +29,9 @@ will be the most recently started kernel from any of the Jupyter frontends: the
 in-terminal `jupyter console`, the independent GUI app `jupyter qtconsole`, a
 `jupyter notebook`, or a notebook or console instance opened from `jupyter lab`.
 
-Currently, `toju` works best with the Qt Console frontend, which will display the
-output of code executions requested by `toju` by invoking it with the following
-option:
+Currently, `toju` works best with the Qt Console frontend, which will display
+the output of code executions requested by `toju` by invoking it with the
+following option:
 
 ```bash
     $ jupyter qtconsole --JupyterWidget.include_other_output=True
@@ -55,10 +55,10 @@ above](#make-executable)):
     $ toju "print('Hello World')"
 ```
 
-If code is not specified as an argument, `toju` will send accept code from
-standard input -- this is useful for piping in code from another shell command,
-reading from a file, or for typing multi-line code blocks with here-document
-(<<). For example:
+`toju` will send code passed to it from standard input, instead of arguments --
+this is useful for piping in code from another shell command, reading from a
+file, or for typing multi-line code blocks with here-document (<<). For
+example:
 
 ```bash
     $ echo "print('Hello World')" | toju
