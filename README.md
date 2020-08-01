@@ -30,7 +30,7 @@ in-terminal `jupyter console`, the independent GUI app `jupyter qtconsole`, a
 `jupyter notebook`, or a notebook or console instance opened from `jupyter lab`.
 
 Currently, `toju` works best with the Qt Console frontend, which will display
-the output of code executions requested by `toju` by invoking it with the
+the output of code executions requested by `toju` when invoked with the
 following option:
 
 ```bash
