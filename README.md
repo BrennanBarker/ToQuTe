@@ -81,7 +81,7 @@ Normal mode) or selected lines (in Visual mode) to the most recently opened
 Jupyter kernel:
 
 ```vim
-    :noremap <leader>J :w !toju
+    :noremap <silent> <leader>J :w !toju<cr><cr>
 ```
 
 For those interested in a Vim plugin featuring many additional integrations
