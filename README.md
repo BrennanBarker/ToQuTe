@@ -74,7 +74,7 @@ example:
     heredoc> EOF
 ```
 
-Accepting from standard input also allows `toju` to connect any programs with an
+Accepting from standard input also allows `toju` to allow any programs with an
 ability to access the shell to easily send code to a Jupyter kernel. For
 example, in Vim, the following maps `<leader>J` to sending the current file (in
 Normal mode) or selected lines (in Visual mode) to the most recently opened
