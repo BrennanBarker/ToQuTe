@@ -1,27 +1,18 @@
-from argparse import ArgumentParser
+#! /usr/bin/env python
+"""Send code to a Jupyter kernel from the command line."""
+
+# TODO: option for different command separators for different languages?
+
 import sys
 from jupyter_client import find_connection_file, BlockingKernelClient
 
 
-def get_kwargs():
-    parser = ArgumentParser(prog='toju',
-                            description=('Interact with a Jupyter kernel from '
-                                        'the command line.'))
-    parser.add_argument('code', action='store', nargs='?', default=sys.stdin)
-    kwargs = vars(parser.parse_args())
-
-    if hasattr(kwargs['code'], 'read'):  # If stdin or file get contents
-        kwargs['code'] = kwargs['code'].read()
-
-    return kwargs
-
-
-def main(code):
+def main():
     client = BlockingKernelClient()
     client.load_connection_file(find_connection_file())
+    code = "; ".join(sys.argv[1:]) if len(sys.argv) > 1 else sys.stdin.read()
     client.execute(code, allow_stdin=False)
 
 
 if __name__ == '__main__':
-    kwargs = get_kwargs()
-    main(**kwargs)
+    main()
