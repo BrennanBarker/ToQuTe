@@ -15,11 +15,11 @@ repository, making `toju` executable, and adding a symbolic link to it in
 /usr/local/bin. This will add `toju` to your system's `$PATH`, making it
 available without needing to (explicitly) invoke `python`:
 
-```console
-    git clone https://github.com/BrennanBarker/toju.git
-    cd toju
-    chmod +x toju.py
-    ln -s <FULL-PATH-TO>/toju.py /usr/local/bin 
+```bash
+    $ git clone https://github.com/BrennanBarker/toju.git
+    $ cd toju
+    $ chmod +x toju.py
+    $ ln -s <FULL-PATH-TO>/toju.py /usr/local/bin 
 ```
 
 ## Usage
@@ -33,7 +33,7 @@ Currently, `toju` works best with the Qt Console frontend, which will display th
 output of code executions requested by `toju` by invoking it with the following
 option:
 
-```console
+```bash
     $ jupyter qtconsole --JupyterWidget.include_other_output=True
 ```
 
@@ -51,7 +51,7 @@ Jupyter frontend from a terminal as normal, then invoke `toju` with the code
 you'd like execute in the kernel as an argument. For example (assuming you have
 made `toju` executable and placed it on your $PATH [as above](#make-esecutable)):
 
-```console
+```bash
     $ toju "print('Hello World')"
 ```
 
@@ -60,14 +60,14 @@ standard input -- this is useful for piping in code from another shell command,
 reading from a file, or for typing multi-line code blocks with here-document
 (<<). For example:
 
-```console
+```bash
     $ echo "print('Hello World')" | toju
 ```
-```console
+```bash
     $ echo "print('Hello World')" > example.txt
     $ toju < example.txt
 ```
-```console
+```bash
     $ toju << EOF
     heredoc> print('Hello')
     heredoc> print('World')
@@ -78,7 +78,7 @@ Accepting from standard input also allows `toju` to connect any programs with an
 ability to access the shell to easily send code to a Jupyter kernel. For
 example, in Vim, the following maps `<leader>J` to sending the current file (in
 Normal mode) or selected lines (in Visual mode) to the most recently opened
-Jupyter kernel by pressing <leader>J.
+Jupyter kernel:
 
 ```vim
     :noremap <leader>J :w !toju
