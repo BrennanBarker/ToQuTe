@@ -10,16 +10,8 @@ A small CLI script for interacting with a Jupyter kernel from the command line.
 standard library and `jupyter_client`, which is already in your environment if
 you're looking to connect to a Jupyter kernel. 
 
-<a id="make-executable"></a>On Unix-like systems, I recommend cloning this
-repository, making `toju` executable, and adding a symbolic link to it in
-/usr/local/bin. This will add `toju` to your system's `$PATH`, making it
-available without needing to (explicitly) invoke `python`:
-
 ```bash
-    $ git clone https://github.com/BrennanBarker/toju.git
-    $ cd toju
-    $ chmod +x toju.py
-    $ ln -s <FULL-PATH-TO>/toju.py /usr/local/bin 
+    $ pip install toju
 ```
 
 ## Usage
@@ -47,9 +39,7 @@ can see that code sent by `toju` is still executed in the kernel, however, by
 executing code using `toju` and then running the Jupyter cell magic `%rerun`.
 
 If you have just a single kernel running, simply invoke `toju` with the code
-you'd like execute in the kernel as an argument. For example (assuming you have
-made `toju` executable and placed it on your $PATH [as
-above](#make-executable)):
+you'd like execute in the kernel as an argument. 
 
 ```bash
     $ toju "print('Hello World')"
@@ -74,7 +64,7 @@ example:
     heredoc> EOF
 ```
 
-Accepting from standard input also allows `toju` to allow any programs with an
+Accepting from standard input also allows `toju` to allow any program with an
 ability to access the shell to easily send code to a Jupyter kernel. For
 example, in Vim, the following maps `<leader>J` to sending the current file (in
 Normal mode) or selected lines (in Visual mode) to the most recently opened
